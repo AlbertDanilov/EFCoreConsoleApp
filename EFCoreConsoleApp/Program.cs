@@ -3,6 +3,7 @@ using EFCoreConsoleApp.Models;
 
 using (ApplicationContext db = new ApplicationContext())
 {
+    /*  --Add & Remove
     User tom = new User { Name = "Tom", Age = 33 };
     User alice = new User { Name = "Alice", Age = 26 };
 
@@ -17,6 +18,13 @@ using (ApplicationContext db = new ApplicationContext())
     {
         Console.WriteLine($"{user.Id}.{user.Name} - {user.Age}");
     }
+
+    db.Users.Remove(db.Users.ToList().Last());
+    db.SaveChanges();
+    */
+
+
+
 
     Console.ReadLine();
 }
