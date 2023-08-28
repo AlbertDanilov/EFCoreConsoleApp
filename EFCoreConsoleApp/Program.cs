@@ -5,14 +5,19 @@ using EFCoreConsoleApp;
 
 using (HelloappContext db = new HelloappContext())
 {
-    var users = db.Users.ToList();
+    bool isDbAvalaible = db.Database.CanConnect();
 
-    Console.WriteLine("Users:");
-
-    foreach (var u in users)
+    if (isDbAvalaible)
     {
-        Console.WriteLine($"{u.Id}.{u.Name} - {u.Age}");
-    }
+        var users = db.Users.ToList();
+
+        Console.WriteLine("Users:");
+
+        foreach (var u in users)
+        {
+            Console.WriteLine($"{u.Id}.{u.Name} - {u.Age}");
+        }
+    }    
 }
 
 Console.ReadLine();
