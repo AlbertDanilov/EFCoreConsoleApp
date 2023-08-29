@@ -3,9 +3,17 @@
 
 using EFCoreConsoleApp;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
+var builder = new ConfigurationBuilder();
+builder.SetBasePath(Directory.GetCurrentDirectory());
+builder.AddJsonFile("appsettings.json");
+var config = builder.Build();
+
+string connectionString = config.GetConnectionString("DefaultConnection");
 
 var optionsBuilder = new DbContextOptionsBuilder<HelloappContext>();
-var options = optionsBuilder.UseSqlite("Data Source=D:\\VSGit\\EFCoreConsoleApp\\EFCoreConsoleApp\\DB\\helloapp.db").Options;
+var options = optionsBuilder.UseSqlite(connectionString).Options;
 
 using (HelloappContext db = new HelloappContext(options))
 {
