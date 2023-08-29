@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EFCoreConsoleApp;
 
@@ -24,9 +25,9 @@ public partial class HelloappContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite();
-        //optionsBuilder.LogTo(Console.WriteLine);
+        optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
         //optionsBuilder.LogTo(message => System.Diagnostics.Debug.WriteLine(message));
-        optionsBuilder.LogTo(logStream.WriteLine);
+        //optionsBuilder.LogTo(logStream.WriteLine);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
