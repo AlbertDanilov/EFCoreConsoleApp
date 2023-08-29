@@ -27,7 +27,8 @@ public partial class HelloappContext : DbContext
     {
         optionsBuilder.UseSqlite();
         //optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
-        optionsBuilder.LogTo(Console.WriteLine, new[] { RelationalEventId.CommandExecuted });
+        //optionsBuilder.LogTo(Console.WriteLine, new[] { RelationalEventId.CommandExecuted });
+        //optionsBuilder.LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name });
         //optionsBuilder.LogTo(message => System.Diagnostics.Debug.WriteLine(message));
         //optionsBuilder.LogTo(logStream.WriteLine);
     }
