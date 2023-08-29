@@ -16,8 +16,8 @@ public partial class HelloappContext : DbContext
     public HelloappContext(DbContextOptions<HelloappContext> options)
         : base(options)
     {
-        Database.EnsureDeleted();
-        Database.EnsureCreated();
+        //Database.EnsureDeleted();
+        //Database.EnsureCreated();
     }
 
     readonly StreamWriter logStream = new StreamWriter("mylog.txt", true);

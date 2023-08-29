@@ -21,12 +21,12 @@ using (HelloappContext db = new HelloappContext(options))
 
     if (isDbAvalaible)
     {
-        User tom = new User { Name = "Tom", Age = 21 };
-        User alice = new User { Name = "Alice", Age = 22 };
+        //User tom = new User { Name = "Tom", Age = 21 };
+        //User alice = new User { Name = "Alice", Age = 22 };
 
-        db.Users.Add(tom);
-        db.Users.Add(alice);
-        db.SaveChanges();
+        //db.Users.Add(tom);
+        //db.Users.Add(alice);
+        //db.SaveChanges();
 
         var users = db.Users.ToList();
         Console.WriteLine("Users:");
