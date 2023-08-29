@@ -20,7 +20,7 @@ public partial class HelloappContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=D:\\VSGit\\EFCoreConsoleApp\\EFCoreConsoleApp\\DB\\helloapp.db");
+        optionsBuilder.UseSqlite();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
