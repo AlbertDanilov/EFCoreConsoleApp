@@ -14,6 +14,8 @@ public partial class HelloappContext : DbContext
     public HelloappContext(DbContextOptions<HelloappContext> options)
         : base(options)
     {
+        Database.EnsureDeleted();
+        Database.EnsureCreated();
     }
 
     public virtual DbSet<User> Users { get; set; }
@@ -21,6 +23,8 @@ public partial class HelloappContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite();
+        //optionsBuilder.LogTo(Console.WriteLine);
+        optionsBuilder.LogTo(message => System.Diagnostics.Debug.WriteLine(message));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

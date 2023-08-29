@@ -21,13 +21,20 @@ using (HelloappContext db = new HelloappContext(options))
 
     if (isDbAvalaible)
     {
-        //User tom = new User { Name = "Tom", Age = 21};
-        //User alice = new User { Name = "Alice", Age = 22};
+        User tom = new User { Name = "Tom", Age = 21 };
+        User alice = new User { Name = "Alice", Age = 22 };
 
-        //await db.Users.AddRangeAsync(tom, alice);
-        //await db.SaveChangesAsync();
+        db.Users.Add(tom);
+        db.Users.Add(alice);
+        db.SaveChanges();
 
-        Console.WriteLine(123);
+        var users = db.Users.ToList();
+        Console.WriteLine("Users:");
+
+        foreach (var user in users)
+        {
+            Console.WriteLine($"{user.Id}.{user.Name} - {user.Age}");
+        }
     }    
 }
 
