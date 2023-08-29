@@ -9,20 +9,13 @@ using (HelloappContext db = new HelloappContext())
 
     if (isDbAvalaible)
     {
-        var user = db.Users.FirstOrDefault();
+        User tom = new User { Name = "Tom", Age = 21};
+        User alice = new User { Name = "Alice", Age = 22};
 
-        //if (user != null)
-        //{
-        //    user.Name = "Albert";
-        //    user.Age = 28;
-        //    db.SaveChanges();
-        //}
+        await db.Users.AddRangeAsync(tom, alice);
+        await db.SaveChangesAsync();
 
-        //user = db.Users.OrderBy((x) => x.Id).LastOrDefault();
-        //db.Users.Remove(user);
-        //db.SaveChanges();
-
-
+        Console.WriteLine(123);
     }    
 }
 
