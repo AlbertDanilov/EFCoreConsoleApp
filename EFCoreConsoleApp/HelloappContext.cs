@@ -20,6 +20,8 @@ public partial class HelloappContext : DbContext
     {
         modelBuilder.ApplyConfiguration(new UserConfiguraton());
 
+        modelBuilder.Entity<User>().HasData(new User { Id = 1, Name = "Albert", Age = 28 });
+
         base.OnModelCreating(modelBuilder);
     }
 }
