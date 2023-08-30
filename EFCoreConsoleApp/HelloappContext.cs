@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EFCoreConsoleApp.Models.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
@@ -7,8 +8,8 @@ using Microsoft.Extensions.Logging;
 namespace EFCoreConsoleApp;
 
 public partial class HelloappContext : DbContext
-{    
-    public virtual DbSet<User> Users { get; set; }
+{
+    public DbSet<User> Users { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -17,14 +18,7 @@ public partial class HelloappContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        //modelBuilder.Entity<User>().ToTable("Peoples");
-        //modelBuilder.Ignore<User>();
-        //modelBuilder.Entity<User>().HasKey(x => x.Id);
-        //modelBuilder.Entity<User>().HasKey(x => new {x.Id, x.Name});
-        //modelBuilder.Entity<User>().Ignore(x => x.Age);
-        //modelBuilder.Entity<User>().Property(x => x.Name).IsRequired();
-        //modelBuilder.Entity<User>().Property(x => x.Name).IsOptional();
-        //modelBuilder.Entity<User>().Property(x => x.Name).HasMaxLength(255);
+        modelBuilder.ApplyConfiguration(new UserConfiguraton());
 
         base.OnModelCreating(modelBuilder);
     }
