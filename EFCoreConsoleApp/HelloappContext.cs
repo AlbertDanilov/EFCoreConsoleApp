@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EFCoreConsoleApp.Models;
 using EFCoreConsoleApp.Models.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -10,6 +11,7 @@ namespace EFCoreConsoleApp;
 public partial class HelloappContext : DbContext
 {
     public DbSet<User> Users { get; set; } = null!;
+    public DbSet<Company> Companies { get; set; } = null!;
 
     public HelloappContext() 
     {
@@ -22,12 +24,12 @@ public partial class HelloappContext : DbContext
         optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=helloappdb;Trusted_Connection=True;");
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.ApplyConfiguration(new UserConfiguraton());
+    //protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //{
+    //    modelBuilder.ApplyConfiguration(new UserConfiguraton());
 
-        modelBuilder.Entity<User>().HasData(new User { Id = 1, Name = "Albert", Age = 28 });
+    //    modelBuilder.Entity<User>().HasData(new User { Id = 1, Name = "Albert", Age = 28 });
 
-        base.OnModelCreating(modelBuilder);
-    }
+    //    base.OnModelCreating(modelBuilder);
+    //}
 }
