@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EFCoreConsoleApp.Models;
 
@@ -9,9 +10,9 @@ public partial class User
 
     public string? Name { get; set; }
 
-    public int CompanyId { get; set; }      // внешний ключ
-    public Company? Company { get; set; }   // навигационное свойство
+    //public int CompanyId { get; set; }      // внешний ключ
+    public int CompanyInfoKey { get; set; }
 
-    //public long Age { get; set; }
-    //public string? Position { get; set; }
+    [ForeignKey("CompanyInfoKey")]
+    public Company? Company { get; set; }   // навигационное свойство
 }
