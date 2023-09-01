@@ -28,6 +28,7 @@ public partial class HelloappContext : DbContext
     //{
     //    modelBuilder.ApplyConfiguration(new UserConfiguraton());
 
+    //вставка при создании таблицы
     //    modelBuilder.Entity<User>().HasData(new User { Id = 1, Name = "Albert", Age = 28 });
 
     //    base.OnModelCreating(modelBuilder);
@@ -38,7 +39,9 @@ public partial class HelloappContext : DbContext
         modelBuilder.Entity<User>()
             .HasOne(u => u.Company)
             .WithMany(u => u.Users)
-            .HasForeignKey(u => u.CompanyInfoKey);
+            .HasForeignKey(u => u.CompanyInfoKey)
+            .OnDelete(DeleteBehavior.Cascade); //каскадное удаление
+
 
         base.OnModelCreating(modelBuilder);
     }
