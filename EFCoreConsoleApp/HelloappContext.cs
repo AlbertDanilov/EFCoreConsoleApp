@@ -32,4 +32,15 @@ public partial class HelloappContext : DbContext
 
     //    base.OnModelCreating(modelBuilder);
     //}
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>()
+            .HasOne(u => u.Company)
+            .WithMany(u => u.Users)
+            .HasForeignKey(u => u.CompanyInfoKey);
+
+        base.OnModelCreating(modelBuilder);
+    }
+
 }

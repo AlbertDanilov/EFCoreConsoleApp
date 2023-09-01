@@ -13,6 +13,6 @@ public partial class User
     //public int CompanyId { get; set; }      // внешний ключ
     public int CompanyInfoKey { get; set; }
 
-    [ForeignKey("CompanyInfoKey")]
+    //[ForeignKey("CompanyInfoKey")]
     public Company? Company { get; set; }   // навигационное свойство
 }
