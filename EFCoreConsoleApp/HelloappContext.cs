@@ -13,11 +13,11 @@ public partial class HelloappContext : DbContext
     public DbSet<User> Users { get; set; } = null!;
     public DbSet<Company> Companies { get; set; } = null!;
 
-    public HelloappContext() 
-    {
-        Database.EnsureDeleted();
-        Database.EnsureCreated();    
-    }
+    //public HelloappContext() 
+    //{
+    //    Database.EnsureDeleted();
+    //    Database.EnsureCreated();    
+    //}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

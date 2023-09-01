@@ -7,22 +7,8 @@ using Microsoft.Extensions.Configuration;
 
 using (HelloappContext db = new HelloappContext())
 {
-    //User tom = new User { Name = "Tom", Age = 21 };
-    //User alice = new User { Name = "Alice", Age = 22 };
-
-    //db.Users.AddRange(tom, alice);
-
-    //db.SaveChanges();
-
-    //var users = db.Users.ToList();
-    //Console.WriteLine("Users:");
-
-    //foreach (var user in users)
-    //{
-    //    Console.WriteLine($"{user.Id}.{user.Name} - {user.Age}");
-    //}
-
-
+    db.Database.EnsureDeleted();
+    db.Database.EnsureCreated();
 
     Company company1 = new Company { Name = "Google" };
     Company company2 = new Company { Name = "Microsoft" };
@@ -34,13 +20,18 @@ using (HelloappContext db = new HelloappContext())
     db.Companies.AddRange(company1, company2);
     db.Users.AddRange(user1, user2, user3);
 
-    db.SaveChanges();
+    db.SaveChanges();  
 
-    foreach (var user in db.Users.ToList()) 
+}
+
+using (HelloappContext db = new HelloappContext())
+{
+    foreach (var user in db.Users               
+                                .Include(u => u.Company)
+                                .ToList())
     {
         Console.WriteLine($"{user.Name} work in {user.Company?.Name}");
     }
-
 }
 
 Console.ReadLine();
